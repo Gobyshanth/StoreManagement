@@ -1,0 +1,295 @@
+/* General Styles */
+body {
+  font-family: 'Courier', sans-serif;
+  background-color: #DBD0E3;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+.header {
+  font-size: 3rem;
+  color: #30002C;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.category-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category-title {
+  text-align: left;
+  margin-left: 20px;
+  font-size: 2rem;
+  color: #30002C;
+  border-bottom: 2px solid rgb(216, 216, 216);
+  padding-bottom: 5px;
+}
+
+.card-container {
+  display: flex;
+  align-items: center;
+  background-color: #DBD0E3;
+  padding: 20px 10px;
+  gap: 10px;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.card {
+  flex: 0 0 auto;
+  max-width: 245px;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  color: #30002C;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.card button {
+  padding: 10px 20px;
+  background-color: #1A0118;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card button:hover {
+  background-color: #30002C;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  padding: 10px;
+  font-size: 1.5rem;
+  background-color: #82408B;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+/* Responsive Styles */
+
+/* Small Devices (Mobile Phones) */
+@media (max-width: 768px) {
+  .header {
+    font-size: 2rem;
+  }
+
+  .category-title {
+    font-size: 1.5rem;
+  }
+
+  .card {
+    max-width: 200px;
+    padding: 15px;
+  }
+
+  .card img {
+    height: 120px;
+  }
+
+  .card h3 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.9rem;
+  }
+
+  .card button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .nav-button {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+}
+
+/* Specific Styles for 375px Screen Width */
+@media (max-width: 375px) {
+  .header {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .category-title {
+    font-size: 1.3rem;
+    margin-left: 10px;
+  }
+
+  .card-container {
+    display: flex;
+    gap: 5px; /* Reduce gap between cards */
+    padding: 15px 5px; /* Adjust padding for smaller screens */
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of cards */
+  }
+
+  .card {
+    flex: 0 0 90%; /* Adjust card width to fit within the screen */
+    max-width: 90%; /* Ensure the card doesn't exceed the container width */
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  .card img {
+    height: 100px; /* Reduce image height */
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+  }
+
+  .card p {
+    font-size: 0.8rem;
+  }
+
+  .card button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    background-color: #30002C;
+  }
+
+  .nav-button {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+}
+
+/* Medium Devices (Tablets) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header {
+    font-size: 2.5rem;
+  }
+
+  .category-title {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    max-width: 200px;
+    padding: 18px;
+  }
+
+  .card img {
+    height: 140px;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card p {
+    font-size: 0.95rem;
+  }
+
+  .card button {
+    padding: 9px 18px;
+    font-size: 1rem;
+  }
+
+  .nav-button {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}
+
+/* Large Devices (Desktops) */
+@media (min-width: 1025px) {
+  .header {
+    font-size: 3rem;
+  }
+
+  .category-title {
+    font-size: 2rem;
+  }
+
+  .card {
+    max-width: 245px;
+    padding: 20px;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  .card h3 {
+    font-size: 1.2rem;
+  }
+
+  .card p {
+    font-size: 1rem;
+  }
+
+  .card button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .nav-button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+}
