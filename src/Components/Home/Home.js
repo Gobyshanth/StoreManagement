@@ -151,7 +151,7 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/send-email", {
+      const response = await fetch("https://pixgeo-management.vercel.app/my-app/src/services/email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
