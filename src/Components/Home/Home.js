@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux'; // Import Redux hooks
-import { fetchData } from '../../Redux/Slices/dataSlice'; // Import the fetchData thunk
-import Header from '../header/Header';
-import './Home.css';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../Redux/Slices/dataSlice";
+import Header from "../header/Header";
+import "./Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,15 +18,15 @@ const Home = () => {
   useEffect(() => {
     const fetchRatings = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/ratings');
+        const response = await fetch("https://your-production-url/api/ratings"); // Replace with the correct URL
         if (response.ok) {
           const data = await response.json();
           setRatings(data); // Set the ratings from the backend
         } else {
-          console.error('Failed to fetch ratings');
+          console.error("Failed to fetch ratings");
         }
       } catch (error) {
-        console.error('Error fetching ratings:', error);
+        console.error("Error fetching ratings:", error);
       }
     };
 
@@ -49,7 +49,7 @@ const Home = () => {
   const handleNext = (category) => {
     setSliderIndex((prev) => ({
       ...prev,
-      [category]: Math.min((prev[category] || 0) + 4, categories[category].length - 4),
+      [category]: Math.min((prev[category] || 0) + 4, Math.max(0, categories[category].length - 1)),
     }));
   };
 
@@ -136,14 +136,14 @@ const Home = () => {
   // Prevent background scrolling when popup is shown
   useEffect(() => {
     if (showPopup) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling
+      document.body.style.overflow = "hidden"; // Disable scrolling
     } else {
-      document.body.style.overflow = 'auto'; // Enable scrolling
+      document.body.style.overflow = "auto"; // Enable scrolling
     }
 
     // Cleanup on component unmount
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = "auto";
     };
   }, [showPopup]);
 
@@ -151,7 +151,7 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://pixgeo-management.vercel.app/my-app/src/services/email", {
+      const response = await fetch("https://storemanagement-production-7bd7.up.railway.app/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -163,8 +163,15 @@ const Home = () => {
         alert("Order placed successfully!");
         setShowPopup(false); // Close the popup after submission
       } else {
-        const errorData = await response.json();
-        alert("Failed to send order details: " + errorData.error);
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await response.json();
+          alert("Failed to send order details: " + errorData.error);
+        } else {
+          const errorText = await response.text();
+          console.error("Error response:", errorText);
+          alert("An unexpected error occurred. Please try again.");
+        }
       }
     } catch (error) {
       console.error("Error:", error);
@@ -415,17 +422,17 @@ const Home = () => {
       {showPopup && (
         <div
           style={{
-            position: 'fixed',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: '#fff',
-            padding: '30px',
-            borderRadius: '10px',
-            boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            backgroundColor: "#fff",
+            padding: "30px",
+            borderRadius: "10px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
             zIndex: 1000,
-            width: '600px', // Default width for larger screens
-            maxWidth: '90%', // Ensure it doesn't exceed screen width
+            width: "90%", // Adjust width for smaller screens
+            maxWidth: "600px", // Ensure it doesn't exceed 600px
           }}
         >
           <style>

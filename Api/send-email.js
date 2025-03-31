@@ -1,6 +1,15 @@
 // api/send-email.js
 export default async function handler(req, res) {
+    
     if (req.method === 'POST') {
+        const response = await fetch("https://your-project.vercel.app/api/send-email", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          });
+          
       const { formData } = req.body;
       
       // இங்கே உங்கள் email அனுப்பும் backend logic இருக்கும்
